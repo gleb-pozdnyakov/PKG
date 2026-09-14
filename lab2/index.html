@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторная работа: Цветовые модели (Вариант 4)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>Лабораторная работа: RGB ↔ HSV ↔ LAB</h1>
+
+    <div class="container">
+        <div class="workspace">
+            <div id="warning" class="warning-box">
+                ⚠️ Внимание! Выход за границы цветового охвата sRGB. Выполнено усечение/сжатие цвета.
+            </div>
+
+            <div class="panel">
+                <div class="panel-title">Параметры конвертации</div>
+                <div class="flex-group">
+                    <label>Источник освещения: 
+                        <select id="illuminant" style="padding: 4px; border-radius:4px;">
+                            <option value="D65" selected>D65 (sRGB)</option>
+                            <option value="D50">D50 (Полиграфия)</option>
+                            <option value="E">E (Равноэнергетический)</option>
+                        </select>
+                    </label>
+                    <label style="margin-left: 20px;">Gamut Mapping: 
+                        <select id="strategy" style="padding: 4px; border-radius:4px;">
+                            <option value="clipping" selected>Clipping (Обрезание)</option>
+                            <option value="scaling">Scaling (Масштабирование)</option>
+                        </select>
+                    </label>
+                </div>
+            </div>
+            <div class="panel">
+                <div class="panel-title">Управление цветом</div>
+                <div class="model-block">
+                    <div>
+                        <h3 style="color:#c0392b; margin-top:0;">RGB</h3>
+                        <div class="component-row"><label>R</label><div class="slider-container"><input type="range" id="slide_r" min="0" max="255"><input type="number" id="num_r"></div></div>
+                        <div class="component-row"><label>G</label><div class="slider-container"><input type="range" id="slide_g" min="0" max="255"><input type="number" id="num_g"></div></div>
+                        <div class="component-row"><label>B</label><div class="slider-container"><input type="range" id="slide_b" min="0" max="255"><input type="number" id="num_b"></div></div>
+                    </div>
+
+                    <div>
+                        <h3 style="color:#d35400; margin-top:0;">HSV</h3>
+                        <div class="component-row"><label>H (°)</label><div class="slider-container"><input type="range" id="slide_h" min="0" max="360"><input type="number" id="num_h"></div></div>
+                        <div class="component-row"><label>S (%)</label><div class="slider-container"><input type="range" id="slide_s" min="0" max="100"><input type="number" id="num_s"></div></div>
+                        <div class="component-row"><label>V (%)</label><div class="slider-container"><input type="range" id="slide_v" min="0" max="100"><input type="number" id="num_v"></div></div>
+                    </div>
+
+                    <div>
+                        <h3 style="color:#27ae60; margin-top:0;">LAB</h3>
+                        <div class="component-row"><label>L</label><div class="slider-container"><input type="range" id="slide_l" min="0" max="100"><input type="number" id="num_l"></div></div>
+                        <div class="component-row"><label>a</label><div class="slider-container"><input type="range" id="slide_la" min="-128" max="128"><input type="number" id="num_la"></div></div>
+                        <div class="component-row"><label>b</label><div class="slider-container"><input type="range" id="slide_lb" min="-128" max="128"><input type="number" id="num_lb"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel" style="height: fit-content;">
+            <div class="panel-title">Визуализатор</div>
+            <div id="previewBlock" class="color-preview"></div>
+            <label style="flex-direction: column; align-items: flex-start; gap: 8px;">
+                Выбор из палитры:
+                <input type="color" id="html_picker">
+            </label>
+        </div>
+    </div>
+
+    <script src="model.js"></script>
+    <script src="controller.js"></script>
+
+        <script>
+        class ColorView {
+            constructor(controller) {
+                this.controller = controller;
+                this.initElements();
+                this.setupEvents();
+            }
+
+            initElements() {
+                this.inputs = {
+                    r: { slide: document.getElementById('slide_r'), num: document.getElementById('num_r') },
+                    g: { slide: document.getElementById('slide_g'), num: document.getElementById('num_g') },
+                    b: { slide: document.getElementById('slide_b'), num: document.getElementById('num_b') },
+                    h: { slide: document.getElementById('slide_h'), num: document.getElementById('num_h') },
+                    s: { slide: document.getElementById('slide_s'), num: document.getElementById('num_s') },
+                    v: { slide: document.getElementById('slide_v'), num: document.getElementById('num_v') },
+                    l: { slide: document.getElementById('slide_l'), num: document.getElementById('num_l') },
+                    la: { slide: document.getElementById('slide_la'), num: document.getElementById('num_la') },
+                    lb: { slide: document.getElementById('slide_lb'), num: document.getElementById('num_lb') }
+                };
+                this.previewBlock = document.getElementById('previewBlock');
+                this.htmlPicker = document.getElementById('html_picker');
+                this.warningBox = document.getElementById('warning');
+                this.illuminantSelect = document.getElementById('illuminant');
+                this.strategySelect = document.getElementById('strategy');
+            }
+
+                        setupEvents() {
+                const bindGroup = (keys, modelName) => {
+                    keys.forEach(key => {
+                        const item = this.inputs[key];
+                        
+                        item.slide.addEventListener('input', (e) => {
+                            let val = parseFloat(e.target.value) || 0;
+                            item.num.value = val;
+                            
+                            const currentValues = keys.map(k => parseFloat(this.inputs[k].num.value) || 0);
+                            this.controller.updateAllComponents(modelName, currentValues);
+                        });
+
+                        item.num.addEventListener('change', (e) => {
+                            let val = parseFloat(e.target.value);
+                            
+                            if (isNaN(val)) {
+                                val = parseFloat(item.slide.value) || 0;
+                            }
+                            
+                            val = Math.max(parseFloat(item.slide.min), Math.min(parseFloat(item.slide.max), val));
+                            
+                            item.slide.value = val;
+                            item.num.value = val;
+                            
+                            const currentValues = keys.map(k => parseFloat(this.inputs[k].num.value) || 0);
+                            this.controller.updateAllComponents(modelName, currentValues);
+                        });
+                    });
+                };
+
+                bindGroup(['r', 'g', 'b'], 'rgb');
+                bindGroup(['h', 's', 'v'], 'hsv');
+                bindGroup(['l', 'la', 'lb'], 'lab');
+
+                this.htmlPicker.addEventListener('input', (e) => {
+                    const hex = e.target.value;
+                    const r = parseInt(hex.substring(1,3), 16) || 0;
+                    const g = parseInt(hex.substring(3,5), 16) || 0;
+                    const b = parseInt(hex.substring(5,7), 16) || 0;
+                    this.controller.updateAllComponents('rgb', [r, g, b]);
+                });
+
+                this.illuminantSelect.addEventListener('change', (e) => this.controller.changeIlluminant(e.target.value));
+                this.strategySelect.addEventListener('change', (e) => this.controller.changeGamutStrategy(e.target.value));
+            }
+
+
+            updateUIValues(data, isClipped) {
+                const { rgb, hsv, lab } = data;
+
+                this.inputs.r.slide.value = rgb[0]; this.inputs.r.num.value = rgb[0];
+                this.inputs.g.slide.value = rgb[1]; this.inputs.g.num.value = rgb[1];
+                this.inputs.b.slide.value = rgb[2]; this.inputs.b.num.value = rgb[2];
+
+                this.inputs.h.slide.value = hsv[0]; this.inputs.h.num.value = hsv[0];
+                this.inputs.s.slide.value = hsv[1]; this.inputs.s.num.value = hsv[1];
+                this.inputs.v.slide.value = hsv[2]; this.inputs.v.num.value = hsv[2];
+
+                this.inputs.l.slide.value = lab[0]; this.inputs.l.num.value = lab[0];
+                this.inputs.la.slide.value = lab[1]; this.inputs.la.num.value = lab[1];
+                this.inputs.lb.slide.value = lab[2]; this.inputs.lb.num.value = lab[2];
+
+                this.previewBlock.style.backgroundColor = `rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]})`;
+            
+                const toHex = c => c.toString(16).padStart(2, '0');
+                this.htmlPicker.value = `#${toHex(rgb[0])}${toHex(rgb[1])}${toHex(rgb[2])}`;
+                
+                this.warningBox.style.display = isClipped ? 'block' : 'none';
+            }
+
+            setSliderBackground(key, gradientString) {
+                if (this.inputs[key]) this.inputs[key].slide.style.background = gradientString;
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const model = new ColorModel();
+            const controller = new ColorController(model);
+            const view = new ColorView(controller);
+            controller.init(view);
+        });
+    </script>
+</body>
