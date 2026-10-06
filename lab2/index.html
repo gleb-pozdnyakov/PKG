@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Лабораторная 2: Графический Парсер</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Presentation Layer (UI) — Анализатор графических файлов</h1>
+        
+        <div class="controls">
+            <input type="text" id="folderPath" placeholder="Введите полный путь к папке (например: C:\Users\User\Pictures)">
+            <button id="scanBtn">Запустить сканирование</button>
+        </div>
+
+        <div class="progress-box" id="progressBox">
+            <div id="progressText">Подготовка к сканированию...</div>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Имя файла</th>
+                        <th>Размер изображения</th>
+                        <th>Разрешение (DPI)</th>
+                        <th>Глубина цвета</th>
+                        <th>Сжатие</th>
+                        <th>Статус файла</th>
+                    </tr>
+                </thead>
+                <tbody id="resultTable">
+                    <tr>
+                        <td colspan="6" style="text-align: center; color: #888; padding: 30px;">Таблица пуста. Задайте путь к папке и нажмите кнопку.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        let eventSource = null;
+
+        document.getElementById('scanBtn').addEventListener('click', () => {
+            const folderPath = document.getElementById('folderPath').value.trim();
+            if (!folderPath) return alert('Пожалуйста, введите путь к папке!');
+
+            const tableBody = document.getElementById('resultTable');
+            const progressBox = document.getElementById('progressBox');
+            const progressText = document.getElementById('progressText');
+            const progressBar = document.getElementById('progressBar');
+
+            tableBody.innerHTML = '';
+            progressBox.style.display = 'block';
+            progressBar.style.width = '0%';
+
+            if (eventSource) eventSource.close();
+
+            eventSource = new EventSource(`/scan?path=${encodeURIComponent(folderPath)}`);
+
+            eventSource.onmessage = function(event) {
+                const data = JSON.parse(event.data);
+
+                if (data.error) {
+                    alert(data.error);
+                    eventSource.close();
+                    progressBox.style.display = 'none';
+                    return;
+                }
+
+                if (data.type === 'start') {
+                    progressText.innerText = `Найдено файлов для анализа: ${data.total}. Начинаем побайтовый парсинг...`;
+                }
+
+                if (data.type === 'data') {
+                    const percent = ((data.processed / data.total) * 100).toFixed(1);
+                    progressBar.style.width = `${percent}%`;
+                    progressText.innerText = `Обработано файлов: ${data.processed} из ${data.total} (${percent}%)`;
+
+                    const rowsHtml = data.chunk.map(file => {
+                        const statusClass = file.status === 'OK' ? 'status-ok' : 'status-err';
+                        const sizeStr = file.width !== '-' ? `${file.width} x ${file.height} px` : '-';
+                        return `
+                            <tr>
+                                <td>${file.name}</td>
+                                <td>${sizeStr}</td>
+                                <td>${file.dpi}</td>
+                                <td>${file.bpp}</td>
+                                <td>${file.compression}</td>
+                                <td class="${statusClass}">${file.status}</td>
+                            </tr>
+                        `;
+                    }).join('');
+
+                    tableBody.insertAdjacentHTML('beforeend', rowsHtml);
+                }
+
+                if (data.type === 'end') {
+                    progressText.innerText = `Сканирование успешно завершено! Все файлы обработаны.`;
+                    eventSource.close();
+                }
+            };
+
+            eventSource.onerror = function() {
+                progressText.innerText = 'Произошла ошибка соединения с сервером.';
+                eventSource.close();
+            };
+        });
+    </script>
+</body>
+</html>
