@@ -1,0 +1,85 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\user\\Desktop\\Sem2\\PKG\\lab3\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|Lab3||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{489DDB04-B57C-4E45-BA74-8FBA8237AB83}|Lab3\\Lab3.csproj|C:\\Users\\user\\Desktop\\Sem2\\PKG\\lab3\\lab3\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{489DDB04-B57C-4E45-BA74-8FBA8237AB83}|Lab3\\Lab3.csproj|solutionrelative:lab3\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{489DDB04-B57C-4E45-BA74-8FBA8237AB83}|Lab3\\Lab3.csproj|C:\\Users\\user\\Desktop\\Sem2\\PKG\\lab3\\lab3\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{489DDB04-B57C-4E45-BA74-8FBA8237AB83}|Lab3\\Lab3.csproj|solutionrelative:lab3\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{489DDB04-B57C-4E45-BA74-8FBA8237AB83}|Lab3\\Lab3.csproj|C:\\Users\\user\\Desktop\\Sem2\\PKG\\lab3\\lab3\\segmentation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{489DDB04-B57C-4E45-BA74-8FBA8237AB83}|Lab3\\Lab3.csproj|solutionrelative:lab3\\segmentation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{489DDB04-B57C-4E45-BA74-8FBA8237AB83}|Lab3\\Lab3.csproj|c:\\users\\user\\desktop\\sem2\\pkg\\lab3\\lab3\\||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|a54ad834-9219-4aa6-b589-607af21c3e26"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Lab3",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\Sem2\\PKG\\lab3\\Lab3\\Lab3.csproj",
+              "RelativeDocumentMoniker": "Lab3\\Lab3.csproj",
+              "ToolTip": "C:\\Users\\user\\Desktop\\Sem2\\PKG\\lab3\\Lab3\\Lab3.csproj",
+              "RelativeToolTip": "Lab3\\Lab3.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-10-13T09:30:56.646Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Segmentation.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\Sem2\\PKG\\lab3\\Lab3\\Segmentation.cs",
+              "RelativeDocumentMoniker": "Lab3\\Segmentation.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\Sem2\\PKG\\lab3\\Lab3\\Segmentation.cs",
+              "RelativeToolTip": "Lab3\\Segmentation.cs",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAuwGYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-04T21:41:54.278Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\Sem2\\PKG\\lab3\\Lab3\\Form1.cs",
+              "RelativeDocumentMoniker": "Lab3\\Form1.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\Sem2\\PKG\\lab3\\Lab3\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "Lab3\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-04T21:13:27.05Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\Sem2\\PKG\\lab3\\Lab3\\Form1.cs",
+              "RelativeDocumentMoniker": "Lab3\\Form1.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\Sem2\\PKG\\lab3\\Lab3\\Form1.cs",
+              "RelativeToolTip": "Lab3\\Form1.cs",
+              "ViewState": "AgIAAHYAAAAAAAAAAAAawIIAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-04T20:22:39.35Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
