@@ -109,6 +109,16 @@
             // numX0
             // 
             this.numX0.Location = new System.Drawing.Point(84, 40);
+            this.numX0.Maximum = new decimal(new int[] {
+            300,
+            0,
+            0,
+            0});
+            this.numX0.Minimum = new decimal(new int[] {
+            300,
+            0,
+            0,
+            -2147483648});
             this.numX0.Name = "numX0";
             this.numX0.Size = new System.Drawing.Size(120, 22);
             this.numX0.TabIndex = 6;
@@ -116,6 +126,16 @@
             // numY0
             // 
             this.numY0.Location = new System.Drawing.Point(84, 87);
+            this.numY0.Maximum = new decimal(new int[] {
+            300,
+            0,
+            0,
+            0});
+            this.numY0.Minimum = new decimal(new int[] {
+            300,
+            0,
+            0,
+            -2147483648});
             this.numY0.Name = "numY0";
             this.numY0.Size = new System.Drawing.Size(120, 22);
             this.numY0.TabIndex = 7;
@@ -123,6 +143,16 @@
             // numX1
             // 
             this.numX1.Location = new System.Drawing.Point(84, 21);
+            this.numX1.Maximum = new decimal(new int[] {
+            300,
+            0,
+            0,
+            0});
+            this.numX1.Minimum = new decimal(new int[] {
+            300,
+            0,
+            0,
+            -2147483648});
             this.numX1.Name = "numX1";
             this.numX1.Size = new System.Drawing.Size(120, 22);
             this.numX1.TabIndex = 8;
@@ -130,6 +160,16 @@
             // numY1
             // 
             this.numY1.Location = new System.Drawing.Point(84, 61);
+            this.numY1.Maximum = new decimal(new int[] {
+            300,
+            0,
+            0,
+            0});
+            this.numY1.Minimum = new decimal(new int[] {
+            300,
+            0,
+            0,
+            -2147483648});
             this.numY1.Name = "numY1";
             this.numY1.Size = new System.Drawing.Size(120, 22);
             this.numY1.TabIndex = 9;

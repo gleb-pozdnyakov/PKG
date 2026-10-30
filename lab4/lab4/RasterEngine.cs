@@ -4,38 +4,6 @@ namespace lab4
 {
     public static class RasterEngine
     {
-        public static void BresenhamLine(int x0, int y0, int x1, int y1, IRasterTarget target)
-        {
-            int dx = Math.Abs(x1 - x0);
-            int dy = Math.Abs(y1 - y0);
-
-            int sx = x0 < x1 ? 1 : -1;
-            int sy = y0 < y1 ? 1 : -1;
-
-            int err = dx - dy;
-
-            while (true)
-            {
-                target.SetPixel(x0, y0, 1.0);
-
-                if (x0 == x1 && y0 == y1) break;
-
-                int e2 = 2 * err;
-
-                if (e2 > -dy)
-                {
-                    err -= dy;
-                    x0 += sx;
-                }
-
-                if (e2 < dx)
-                {
-                    err += dx;
-                    y0 += sy;
-                }
-            }
-        }
-
         public static void StepByStepLine(int x0, int y0, int x1, int y1, IRasterTarget target)
         {
             if (x0 == x1 && y0 == y1)
@@ -54,7 +22,7 @@ namespace lab4
                 double k = (double)(y1 - y0) / (x1 - x0);
                 for (int x = x0; x <= x1; x++)
                 {
-                    int y = (int)Math.Round(y0 + k * (x - x0));
+                    int y = (int)(y0 + k * (x - x0));
                     target.SetPixel(x, y, 1.0);
                 }
             }
@@ -68,17 +36,17 @@ namespace lab4
                 double kInv = (double)(x1 - x0) / (y1 - y0);
                 for (int y = y0; y <= y1; y++)
                 {
-                    int x = (int)Math.Round(x0 + kInv * (y - y0));
-                    target.SetPixel(x, x, 1.0);
+                    int x = (int)(x0 + kInv * (y - y0));
+                    target.SetPixel(x, y, 1.0);
                 }
             }
         }
 
         public static void DDALine(int x0, int y0, int x1, int y1, IRasterTarget target)
         {
-            int dx = x1 - x0;
-            int dy = y1 - y0;
-            int steps = Math.Max(Math.Abs(dx), Math.Abs(dy));
+            double dx = x1 - x0;
+            double dy = y1 - y0;
+            double steps = Math.Max(Math.Abs(dx), Math.Abs(dy));
 
             if (steps == 0)
             {
@@ -86,22 +54,66 @@ namespace lab4
                 return;
             }
 
-            double xInc = (double)dx / steps;
-            double yInc = (double)dy / steps;
+            double xInc = dx / steps;
+            double yInc = dy / steps;
 
             double x = x0;
             double y = y0;
 
             for (int i = 0; i <= steps; i++)
             {
-                target.SetPixel((int)x, (int)y, 1.0);
-
+                target.SetPixel((int)(x), (int)(y), 1.0);
                 x += xInc;
                 y += yInc;
             }
         }
 
+        public static void BresenhamLine(int x0, int y0, int x1, int y1, IRasterTarget target)
+        {
+            int dx = Math.Abs(x1 - x0);
+            int dy = Math.Abs(y1 - y0);
+            int sx = x0 < x1 ? 1 : -1;
+            int sy = y0 < y1 ? 1 : -1;
 
+            if (dx >= dy)
+            {
+                int err = 2 * dy - dx;
+                int x = x0;
+                int y = y0;
+
+                for (int i = 0; i <= dx; i++)
+                {
+                    target.SetPixel(x, y, 1.0);
+
+                    if (err >= 0)
+                    {
+                        y += sy;
+                        err -= 2 * dx;
+                    }
+                    x += sx;
+                    err += 2 * dy;
+                }
+            }
+            else
+            {
+                int err = 2 * dx - dy;
+                int x = x0;
+                int y = y0;
+
+                for (int i = 0; i <= dy; i++)
+                {
+                    target.SetPixel(x, y, 1.0);
+
+                    if (err >= 0)
+                    {
+                        x += sx;
+                        err -= 2 * dy;
+                    }
+                    y += sy;
+                    err += 2 * dx;
+                }
+            }
+        }
 
         public static void BresenhamCircle(int xc, int yc, int r, IRasterTarget target)
         {
@@ -119,6 +131,30 @@ namespace lab4
                 target.SetPixel(xc - y, yc + x, 1.0);
                 target.SetPixel(xc + y, yc - x, 1.0);
                 target.SetPixel(xc - y, yc - x, 1.0);
+
+                if (d < 0)
+                {
+                    d += 4 * x + 6;
+                }
+                else
+                {
+                    d += 4 * (x - y) + 10;
+                    y--;
+                }
+                x++;
+            }
+        }
+
+        public static void CastlePitewayArc(int xc, int yc, int r, IRasterTarget target)
+        {
+            int x = 0;
+            int y = r;
+            int d = 3 - 2 * r;
+
+            while (x <= y)
+            {
+                target.SetPixel(xc + x, yc - y, 1.0);
+                target.SetPixel(xc + y, yc - x, 1.0);
 
                 if (d < 0)
                 {
@@ -204,30 +240,5 @@ namespace lab4
                 }
             }
         }
-
-        public static void CastlePitewayArc(int xc, int yc, int r, IRasterTarget target)
-        {
-            int x = 0;
-            int y = r;
-            int d = 3 - 2 * r;
-
-            while (x <= y)
-            {
-                target.SetPixel(xc + x, yc - y, 1.0);
-                target.SetPixel(xc + y, yc - x, 1.0);
-
-                if (d < 0)
-                {
-                    d += 4 * x + 6;
-                }
-                else
-                {
-                    d += 4 * (x - y) + 10;
-                    y--;
-                }
-                x++;
-            }
-        }
-
     }
 }
