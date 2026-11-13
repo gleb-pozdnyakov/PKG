@@ -1,0 +1,9 @@
+C:\Users\user\Desktop\Sem2\PKG\lab5\publish_release\lab5.pdb
+C:\Users\user\Desktop\Sem2\PKG\lab5\publish_release\lab5.dll.config
+C:\Users\user\Desktop\Sem2\PKG\lab5\publish_release\D3DCompiler_47_cor3.dll
+C:\Users\user\Desktop\Sem2\PKG\lab5\publish_release\PenImc_cor3.dll
+C:\Users\user\Desktop\Sem2\PKG\lab5\publish_release\PresentationNative_cor3.dll
+C:\Users\user\Desktop\Sem2\PKG\lab5\publish_release\vcruntime140_cor3.dll
+C:\Users\user\Desktop\Sem2\PKG\lab5\publish_release\wpfgfx_cor3.dll
+C:\Users\user\Desktop\Sem2\PKG\lab5\publish_release\libSkiaSharp.dll
+C:\Users\user\Desktop\Sem2\PKG\lab5\publish_release\lab5.exe

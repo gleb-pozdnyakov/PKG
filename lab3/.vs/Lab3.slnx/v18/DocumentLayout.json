@@ -3,15 +3,23 @@
   "WorkspaceRootPath": "C:\\Users\\user\\Desktop\\Sem2\\PKG\\lab3\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{489DDB04-B57C-4E45-BA74-8FBA8237AB83}|Lab3\\Lab3.csproj|c:\\users\\user\\desktop\\sem2\\pkg\\lab3\\lab3\\pointoperations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{489DDB04-B57C-4E45-BA74-8FBA8237AB83}|Lab3\\Lab3.csproj|solutionrelative:lab3\\pointoperations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{489DDB04-B57C-4E45-BA74-8FBA8237AB83}|Lab3\\Lab3.csproj|c:\\users\\user\\desktop\\sem2\\pkg\\lab3\\lab3\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{489DDB04-B57C-4E45-BA74-8FBA8237AB83}|Lab3\\Lab3.csproj|solutionrelative:lab3\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{489DDB04-B57C-4E45-BA74-8FBA8237AB83}|Lab3\\Lab3.csproj|C:\\Users\\user\\Desktop\\Sem2\\PKG\\lab3\\lab3\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{489DDB04-B57C-4E45-BA74-8FBA8237AB83}|Lab3\\Lab3.csproj|solutionrelative:lab3\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|Lab3||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{489DDB04-B57C-4E45-BA74-8FBA8237AB83}|Lab3\\Lab3.csproj|C:\\Users\\user\\Desktop\\Sem2\\PKG\\lab3\\lab3\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{489DDB04-B57C-4E45-BA74-8FBA8237AB83}|Lab3\\Lab3.csproj|solutionrelative:lab3\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{489DDB04-B57C-4E45-BA74-8FBA8237AB83}|Lab3\\Lab3.csproj|C:\\Users\\user\\Desktop\\Sem2\\PKG\\lab3\\lab3\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{489DDB04-B57C-4E45-BA74-8FBA8237AB83}|Lab3\\Lab3.csproj|solutionrelative:lab3\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{489DDB04-B57C-4E45-BA74-8FBA8237AB83}|Lab3\\Lab3.csproj|C:\\Users\\user\\Desktop\\Sem2\\PKG\\lab3\\lab3\\segmentation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -33,6 +41,32 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "PointOperations.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\Sem2\\PKG\\lab3\\Lab3\\PointOperations.cs",
+              "RelativeDocumentMoniker": "Lab3\\PointOperations.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\Sem2\\PKG\\lab3\\Lab3\\PointOperations.cs",
+              "RelativeToolTip": "Lab3\\PointOperations.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAmwBYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-13T19:21:04.342Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\Sem2\\PKG\\lab3\\Lab3\\Program.cs",
+              "RelativeDocumentMoniker": "Lab3\\Program.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\Sem2\\PKG\\lab3\\Lab3\\Program.cs",
+              "RelativeToolTip": "Lab3\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-13T19:20:55.336Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Lab3",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\Sem2\\PKG\\lab3\\Lab3\\Lab3.csproj",
               "RelativeDocumentMoniker": "Lab3\\Lab3.csproj",
@@ -44,7 +78,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Segmentation.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\Sem2\\PKG\\lab3\\Lab3\\Segmentation.cs",
               "RelativeDocumentMoniker": "Lab3\\Segmentation.cs",
@@ -56,14 +90,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\Sem2\\PKG\\lab3\\Lab3\\Form1.cs",
               "RelativeDocumentMoniker": "Lab3\\Form1.cs",
               "ToolTip": "C:\\Users\\user\\Desktop\\Sem2\\PKG\\lab3\\Lab3\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "RelativeToolTip": "Lab3\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-04T21:13:27.05Z"
+              "WhenOpened": "2026-10-04T21:13:27.05Z",
+              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
             },
             {
               "$type": "Document",
@@ -75,7 +110,8 @@
               "RelativeToolTip": "Lab3\\Form1.cs",
               "ViewState": "AgIAAHYAAAAAAAAAAAAawIIAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-04T20:22:39.35Z"
+              "WhenOpened": "2026-10-04T20:22:39.35Z",
+              "EditorCaption": ""
             }
           ]
         }
